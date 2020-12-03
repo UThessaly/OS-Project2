@@ -173,14 +173,14 @@ The library that we've created gives us the ability to create new processes, and
 One of the ways you can use the library, is through Lambdas.
 
 ```cpp
-project2::ChildProcess([](project2::ChildProcess createdChildProcess) {
+project2::ChildProcess child([](project2::ChildProcess createdChildProcess) {
     // Basically, the int main() for the subprocess
     createdChildProcess.WriteString("Hello, World from Child");
 
     std::cout << "Child: Hi!" << std::endl; // Child: Hi!
 
     return 0;
-}) child; 
+}); 
 
 child.Run();
 
