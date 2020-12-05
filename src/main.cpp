@@ -16,7 +16,7 @@ int main(int argc, char **argv)
     }
     else
     {
-        std::cout << "Please enter path to file of words [press \"-\" for '../nonsense_words.txt']: ";
+        std::cout << "Please enter path to file of words [press \"-\" for \"../nonsense_words.txt\"]: ";
         std::cin >> inputFile;
 
         if (inputFile == "-")

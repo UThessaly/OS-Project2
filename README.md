@@ -35,7 +35,8 @@ In addition to that, instead of `char**`, we're using `map` from `#include <map>
 In order to compile, we need some linux programs. 
 
 ```bash
-$ sudo apt-get install cmake make gcc g++ build-essentials # Not sure for build-essentials 
+$ sudo apt-get update 
+$ sudo apt-get install cmake make gcc g++ build-essential # Not sure for build-essential 
 $ cd <project-path>
 
 $ mkdir build
