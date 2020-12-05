@@ -44,7 +44,7 @@ $ mkdir build
 # Builds the application in build/ directory
 $ cd build && cmake .. && make
 
-$ chmox +x ./Project2
+$ chmod +x ./Project2
 $ chmod +x ./find_correct_word
 
 $ ./Project2 <dictionary> # ./Project2 without args, will ask for file in runtime
