@@ -105,12 +105,8 @@ namespace project2
 
             argv[finalArgs.size()] = nullptr;
 
-            // std::cout << "Args: ";
-            for(int i = 0; i < finalArgs.size(); i++) { 
-                // std::cout << argv[i] << " ";
-            }
-            // std::cout << std::endl;
             // execvp(path_to_executable, { path_to_executable, args, NULL })
+            /** argv = [ "/bin/ls", "-la", NULL ]; */
             execvp(argv[0], argv);
 
             // If perror is called, it means that execvp has failed
@@ -144,11 +140,11 @@ namespace project2
         pid_t pid = fork();
 
         /** Fork Error Checking */
-        if (pid < 0)
-        {
-            std::cerr << "Could not fork. Fork exited with error code: " << pid << std::endl;
-            perror("fork error");
-            return {};
+            if (pid < 0)
+            {
+                std::cerr << "Could not fork. Fork exited with error code: " << pid << std::endl;
+                perror("fork error");
+                return {};
         }
 
         // Indicates that the subprocess has started
@@ -168,6 +164,7 @@ namespace project2
              * Pipes
              */
             close(m_ChildWrite.WriteFD());
+
             close(m_ParentWrite.ReadFD());
         }
         else
@@ -192,8 +189,9 @@ namespace project2
             if (m_Type == ChildProcessType::eExec)
             {
                 dup2(m_ChildWrite.WriteFD(), STDOUT_FILENO);
-                close(m_ChildWrite.ReadFD());
                 close(m_ChildWrite.WriteFD());
+                close(m_ChildWrite.ReadFD());
+                close(m_ParentWrite.WriteFD());
             }
             /**
              * Just normal pipes
